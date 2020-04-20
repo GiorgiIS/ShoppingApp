@@ -1,15 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-
-import productsRecuder from './store/reducers/productsReducer';
-
-const rootReducer = combineReducers({
-  products: productsRecuder
-});
-
-const store = createStore(rootReducer);
+import { store } from './store/root';
 
 export default function App() {
   return (
