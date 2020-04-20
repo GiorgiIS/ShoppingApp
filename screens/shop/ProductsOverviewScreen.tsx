@@ -8,7 +8,7 @@ export interface Props {
 
 };
 
-const ProductsOverviewScreen: React.FC<Props> = (props: Props) => {
+export const ProductsOverviewScreen: React.FC<Props> = () => {
 
     const products = useSelector<RootState, Product[]>(state => state.products.availableProducts);
 
