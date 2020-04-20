@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
-import { useSelector as useReduxSelector, TypedUseSelectorHook } from 'react-redux';
+import { View, StyleSheet, FlatList, Text } from 'react-native';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store/root';
+import Product from '../../models/product';
 
 export interface Props {
 
@@ -9,13 +10,13 @@ export interface Props {
 
 const ProductsOverviewScreen: React.FC<Props> = (props: Props) => {
 
-    const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
-
-    const products = useSelector(state => state.products.availableProducts);
+    const products = useSelector<RootState, Product[]>(state => state.products.availableProducts);
 
     return (
         <View style={styles.container}>
-
+            <FlatList data={products}
+                renderItem={itemData => <Text>{itemData.item.title}</Text>}
+            />
         </View>
     )
 };
