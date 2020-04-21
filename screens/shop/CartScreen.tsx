@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { DefaultGenericNavigationRouteProps } from '../../navigation/DefaultNavigationProps';
 
-export interface Props {
-
-};
+type Props = DefaultGenericNavigationRouteProps<'Cart'>;
 
 const CartScreen: React.FC<Props> = (props: Props) => {
     return (
