@@ -6,13 +6,7 @@ import { ProductsOverviewScreen } from '../screens/shop/ProductsOverviewScreen';
 import { ProductDetailScreen } from '../screens/shop/ProductDetailScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
-
-export type RootStackParamList = {
-    ProductsOverview: undefined,
-    ProductDetail: { id: string },
-    Cart: undefined,
-    Order: undefined,
-}
+import { RootStackParamList } from './DefaultNavigationProps';
 
 const ProductsStack = createStackNavigator<RootStackParamList>();
 

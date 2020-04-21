@@ -1,8 +1,18 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from './ShopNavigator';
 import { RouteProp } from '@react-navigation/native';
 
-export type NavigationScreenName = 'ProductsOverview' | 'ProductDetail' | 'Cart' | 'Order';
+export type RootStackParamList = {
+    ProductsOverview: undefined,
+    ProductDetail: { id: string },
+    Cart: undefined,
+    Order: undefined,
+}
+
+export type NavigationScreenName =
+    'ProductsOverview' |
+    'ProductDetail' |
+    'Cart' |
+    'Order';
 
 export type DefaultNavigationProps = StackNavigationProp<RootStackParamList, NavigationScreenName>;
 export type DefaultRouteProp = RouteProp<RootStackParamList, NavigationScreenName>;
