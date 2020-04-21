@@ -3,7 +3,7 @@ import { RouteProp } from '@react-navigation/native';
 
 export type RootStackParamList = {
     ProductsOverview: undefined,
-    ProductDetail: { id: string },
+    ProductDetail: { productId: string, productTitle: string },
     Cart: undefined,
     Order: undefined,
 }

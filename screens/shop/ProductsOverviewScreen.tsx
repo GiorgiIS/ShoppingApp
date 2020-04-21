@@ -19,11 +19,13 @@ export const ProductsOverviewScreen: React.FC<Props> = (props: Props) => {
                     title={itemData.item.title}
                     imageUri={itemData.item.imageUrl}
                     price={itemData.item.price}
-                    onToCartClick={() => {
-                        props.navigation.navigate('Cart')
-                    }}
+                    onToCartClick={() =>{ props.navigation.navigate('Cart')}}
                     onViewDetailsClick={() => {
-                        props.navigation.navigate("ProductDetail", { id: itemData.item.id })
+                        props.navigation.navigate("ProductDetail",
+                            {
+                                productId: itemData.item.id,
+                                productTitle: itemData.item.title
+                            })
                     }}
                 />}
         />
