@@ -4,23 +4,28 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp, NavigationContainer } from '@react-navigation/native';
 
 import { ProductsOverviewScreen } from '../screens/shop/ProductsOverviewScreen';
-import Colors from '../constants/Colors';
+import { ProductDetailScreen } from '../screens/shop/ProductDetailScreen';
+import CartScreen from '../screens/shop/CartScreen';
 
-type RootStackParamList = {
-    ProductsOverview: undefined
+export type RootStackParamList = {
+    ProductsOverview: undefined,
+    ProductDetail: { id: string },
+    Cart: undefined
 }
 
 const ProductsStack = createStackNavigator<RootStackParamList>();
 
-const ProductsOverviewNavigator = (props: any) => {
+const ShopNavigator = (props: any) => {
     const content =
         <NavigationContainer>
-            <ProductsStack.Navigator>
+            <ProductsStack.Navigator initialRouteName='ProductsOverview'>
                 <ProductsStack.Screen name="ProductsOverview" component={ProductsOverviewScreen} />
+                <ProductsStack.Screen name="ProductDetail" component={ProductDetailScreen} />
+                <ProductsStack.Screen name="Cart" component={CartScreen} />
             </ProductsStack.Navigator>
         </NavigationContainer>
 
     return content;
 }
 
-export default ProductsOverviewNavigator;
+export default ShopNavigator;
