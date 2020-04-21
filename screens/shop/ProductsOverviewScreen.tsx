@@ -8,14 +8,11 @@ import { State } from 'react-native-gesture-handler';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/ShopNavigator';
 import { RouteProp } from '@react-navigation/native';
-import { DefaultNavigationProps } from './DefaultNavigationProps';
+import { DefaultGenericNavigationRouteProps } from '../../navigation/DefaultNavigationProps';
 
-type ProductsOverviewScreenRouteProp = RouteProp<RootStackParamList, 'ProductsOverview'>;
+type SCREEN_NAME = 'ProductsOverview';
 
-type Props = {
-    route: ProductsOverviewScreenRouteProp;
-    navigation: DefaultNavigationProps;
-};
+type Props = DefaultGenericNavigationRouteProps<SCREEN_NAME>;
 
 export const ProductsOverviewScreen: React.FC<Props> = (props: Props) => {
     const products = useSelector<RootState, Product[]>(state => state.products.availableProducts);
@@ -32,7 +29,7 @@ export const ProductsOverviewScreen: React.FC<Props> = (props: Props) => {
                         props.navigation.navigate('Cart')
                     }}
                     onViewDetailsClick={() => {
-                        props.navigation.navigate("ProductsOverview")
+                        props.navigation.navigate("ProductDetail", { id: itemData.item.id })
                     }}
                 />}
         />
