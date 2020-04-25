@@ -18,7 +18,7 @@ const ProductItem: React.FC<Props> = (props: Props) => {
     return (
         <View style={styles.product}>
             <View style={styles.touchable}>
-                <TouchableComponent onPress={props.onViewDetailsClick} >
+                <TouchableComponent onPress={props.onViewDetailsClick} useForeground>
                     <View>
                         <View style={styles.imageContainer}>
                             <Image style={styles.image} source={{ uri: props.imageUri }} />
