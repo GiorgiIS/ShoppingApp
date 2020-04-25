@@ -25,14 +25,13 @@ const addToCartActionHandler = (state: CartState, action: CartAction) => {
     }
     else {
         newOrUpdatedCartItem = new CartItem(id, 1, price, title);
-        return {
-            ...state,
-            items: { ...state.items, [id]: newOrUpdatedCartItem },
-            totalAmoaunt: state.totalAmoaunt + price
-        }
     }
 
-    return state;
+    return {
+        ...state,
+        items: { ...state.items, [id]: newOrUpdatedCartItem },
+        totalAmoaunt: state.totalAmoaunt + price
+    }
 }
 
 export default (state: CartState = initialState, action: CartAction) => {
