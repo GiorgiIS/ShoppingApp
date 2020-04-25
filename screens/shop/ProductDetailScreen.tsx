@@ -4,6 +4,7 @@ import { DefaultGenericNavigationRouteProps } from '../../navigation/DefaultNavi
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/root';
 import Product from '../../models/product';
+import Colors from '../../constants/Colors';
 
 type Props = DefaultGenericNavigationRouteProps<'ProductDetail'>;
 
@@ -19,18 +20,40 @@ export const ProductDetailScreen: React.FC<Props> = (props: Props) => {
     }, [productTitle]);
 
     return (
-        <View style={styles.container}>
-            <Text>{selectedProduct?.title}</Text>
-            <Text>{selectedProduct?.description}</Text>
-            <Text>{selectedProduct?.price}</Text>
-        </View>
+        <ScrollView>
+            <Image style={styles.image} source={{ uri: selectedProduct?.imageUrl }} />
+            <View style={styles.actions}>
+                <Button
+                    color={Colors.primary}
+                    title='Add to Cart'
+                    onPress={() => console.log('Add to Cart pressed')} />
+            </View>
+            <Text style={styles.price}>{selectedProduct?.price.toFixed(2)}</Text>
+            <Text style={styles.description}>{selectedProduct?.description}</Text>
+        </ScrollView>
     )
 };
 
 
 const styles = StyleSheet.create({
-    container: {
-
+    image: {
+        width: '100%',
+        height: 300
+    },
+    actions: {
+        marginVertical: 10,
+        alignItems: 'center'
+    },
+    price: {
+        fontSize: 20,
+        color: '#888',
+        textAlign: 'center',
+        marginVertical: 20
+    },
+    description: {
+        fontSize: 14,
+        textAlign: 'center',
+        marginHorizontal: 20
     }
 });
 
