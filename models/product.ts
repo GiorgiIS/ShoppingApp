@@ -21,4 +21,8 @@ export default class Product {
         this.title = title;
         this.price = price;
     }
+
+    static default = () => {
+        return new Product('', '', '', '', '', 0);
+    }
 }

@@ -1,15 +1,17 @@
 import React from 'react';
 import { StyleSheet, FlatList } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/root';
 import Product from '../../models/product';
 import ProductItem from '../../components/shop/ProductItem';
 import { DefaultGenericNavigationRouteProps } from '../../navigation/DefaultNavigationProps';
+import * as cartActions from '../../store/actions/cartActions';
 
 type Props = DefaultGenericNavigationRouteProps<'ProductsOverview'>;
 
 export const ProductsOverviewScreen: React.FC<Props> = (props: Props) => {
     const products = useSelector<RootState, Product[]>(state => state.products.availableProducts);
+    const dispatch = useDispatch();
 
     return (
         <FlatList
@@ -19,7 +21,7 @@ export const ProductsOverviewScreen: React.FC<Props> = (props: Props) => {
                     title={itemData.item.title}
                     imageUri={itemData.item.imageUrl}
                     price={itemData.item.price}
-                    onToCartClick={() =>{ props.navigation.navigate('Cart')}}
+                    onAddToCartClick={() => dispatch(cartActions.addToCart(itemData.item))}
                     onViewDetailsClick={() => {
                         props.navigation.navigate("ProductDetail",
                             {

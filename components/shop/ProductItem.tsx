@@ -8,7 +8,7 @@ export interface Props {
     price: number,
     imageUri: string,
     onViewDetailsClick: () => void,
-    onToCartClick: () => void
+    onAddToCartClick: () => void
 };
 
 const ProductItem: React.FC<Props> = (props: Props) => {
@@ -37,8 +37,8 @@ const ProductItem: React.FC<Props> = (props: Props) => {
                             />
                             <Button
                                 color={Colors.primary}
-                                title="To Cart"
-                                onPress={props.onToCartClick}
+                                title="Add To Cart"
+                                onPress={props.onAddToCartClick}
                             />
                         </View>
                     </View>
