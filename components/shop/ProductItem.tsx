@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, Button, Platform, TouchableNativeFeedback, TouchableOpacity } from 'react-native';
 import Colors from '../../constants/Colors';
+import { FontNames, Fonts } from '../../constants/Fonts';
 
 export interface Props {
     title: string
@@ -11,6 +12,7 @@ export interface Props {
 };
 
 const ProductItem: React.FC<Props> = (props: Props) => {
+
     const TouchableComponent: React.ReactType =
         (Platform.OS === 'android' && Platform.Version >= 21)
             ? TouchableNativeFeedback : TouchableOpacity;
@@ -81,11 +83,13 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        marginVertical: 4
+        marginVertical: 2,
+        fontFamily: FontNames.openSansBold
     },
     price: {
         fontSize: 14,
-        color: '#888'
+        color: '#888',
+        fontFamily: FontNames.openSans
     },
     actions: {
         flexDirection: 'row',

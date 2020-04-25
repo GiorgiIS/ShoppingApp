@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/root';
 import Product from '../../models/product';
 import Colors from '../../constants/Colors';
+import { FontNames } from '../../constants/Fonts';
 
 type Props = DefaultGenericNavigationRouteProps<'ProductDetail'>;
 
@@ -48,12 +49,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#888',
         textAlign: 'center',
-        marginVertical: 20
+        marginVertical: 20,
+        fontFamily: FontNames.openSansBold,
     },
     description: {
         fontSize: 14,
         textAlign: 'center',
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        fontFamily: FontNames.openSans
     }
 });
 
