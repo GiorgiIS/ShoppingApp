@@ -12,6 +12,7 @@ const rootReducer = combineReducers({
     cart: cartReducer
 });
 
-export const store = createStore(rootReducer, composeWithDevTools());
+export const store = createStore(rootReducer);
+// export const store = createStore(rootReducer, composeWithDevTools());
 
 export type RootState = ReturnType<typeof rootReducer>;
