@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { FontNames } from '../../constants/Fonts';
 import Colors from '../../constants/Colors';
 import CartItem from '../../models/cart-item';
+import CartItemViewModel from '../../components/shop/CartItemViewModel';
 
 type Props = DefaultGenericNavigationRouteProps<'Cart'>;
 
@@ -33,14 +34,19 @@ const CartScreen: React.FC<Props> = (props: Props) => {
                     disabled={cartItems.length === 0}
                 />
             </View>
-            <View>
-                {
-                    cartItems.map(c => {
-                        return <View key={c.id}>
-                            <Text>{c.id}</Text>
-                        </View>;
-                    })}
-            </View>
+            <FlatList
+                data={cartItems}
+                renderItem={itemData => <CartItemViewModel
+                    id={itemData.item.id}
+                    productTitle={itemData.item.productTitle}
+                    productPrice={itemData.item.productPrice}
+                    quantity={itemData.item.quantity}
+                    sum={itemData.item.sum}
+                    onRemove={() => {
+                        console.log('remove was clicked on: ' + itemData.item.id);
+                    }}
+                />}
+            />
         </View>
     )
 };

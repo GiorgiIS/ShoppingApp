@@ -1,4 +1,4 @@
-export default class CartItem {
+export default class CartItemModel {
     id: string;
     quantity: number;
     productPrice: number;
