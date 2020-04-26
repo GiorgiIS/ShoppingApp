@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { FontNames } from '../../constants/Fonts';
 import Colors from '../../constants/Colors';
 import CartItem from '../../models/cart-item';
-import CartItemViewModel from '../../components/shop/CartItemViewModel';
+import CartItemViewComponent from '../../components/shop/CartItemViewComponent';
 
 type Props = DefaultGenericNavigationRouteProps<'Cart'>;
 
@@ -36,7 +36,7 @@ const CartScreen: React.FC<Props> = (props: Props) => {
             </View>
             <FlatList
                 data={cartItems}
-                renderItem={itemData => <CartItemViewModel
+                renderItem={itemData => <CartItemViewComponent
                     id={itemData.item.id}
                     productTitle={itemData.item.productTitle}
                     productPrice={itemData.item.productPrice}

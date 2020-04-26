@@ -3,7 +3,7 @@ import { StyleSheet, FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/root';
 import Product from '../../models/product';
-import ProductItemViewModel from '../../components/shop/ProductItemViewModel';
+import ProductItemViewComponent from '../../components/shop/ProductItemViewComponent';
 import { DefaultGenericNavigationRouteProps } from '../../navigation/DefaultNavigationProps';
 import * as cartActions from '../../store/actions/cartActions';
 import CustomHeaderButton from '../../components/UI/HeaderButton';
@@ -35,7 +35,7 @@ export const ProductsOverviewScreen: React.FC<Props> = (props: Props) => {
         <FlatList
             data={products}
             renderItem={itemData =>
-                <ProductItemViewModel
+                <ProductItemViewComponent
                     title={itemData.item.title}
                     imageUri={itemData.item.imageUrl}
                     price={itemData.item.price}

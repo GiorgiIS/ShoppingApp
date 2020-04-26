@@ -11,7 +11,7 @@ export interface Props {
     onAddToCartClick: () => void
 };
 
-const ProductItemViewModel: React.FC<Props> = (props: Props) => {
+const ProductItemViewComponent: React.FC<Props> = (props: Props) => {
 
     const TouchableComponent: React.ReactType =
         (Platform.OS === 'android' && Platform.Version >= 21)
@@ -100,4 +100,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ProductItemViewModel;
+export default ProductItemViewComponent;

@@ -14,7 +14,7 @@ export interface Props {
     onRemove: () => void
 };
 
-const CartItemViewModel: React.FC<Props> = (props: Props) => {
+const CartItemViewComponent: React.FC<Props> = (props: Props) => {
     return (
         <View style={styles.cartItem}>
             <View style={styles.itemData}>
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CartItemViewModel;
+export default CartItemViewComponent;
