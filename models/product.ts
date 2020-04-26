@@ -25,4 +25,8 @@ export default class Product {
     static default = () => {
         return new Product('', '', '', '', '', 0);
     }
+
+    static JustId = (id: string) => {
+        return new Product(id, '', '', '', '', 0);
+    }
 }

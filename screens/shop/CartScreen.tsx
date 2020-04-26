@@ -3,15 +3,18 @@ import { View, StyleSheet, Text, Button } from 'react-native';
 import { DefaultGenericNavigationRouteProps } from '../../navigation/DefaultNavigationProps';
 import { FlatList } from 'react-native-gesture-handler';
 import { RootState } from '../../store/root';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontNames } from '../../constants/Fonts';
 import Colors from '../../constants/Colors';
 import CartItem from '../../models/cart-item';
 import CartItemViewComponent from '../../components/shop/CartItemViewComponent';
+import * as cartActions from '../../store/actions/cartActions';
+import Product from '../../models/product';
 
 type Props = DefaultGenericNavigationRouteProps<'Cart'>;
 
 const CartScreen: React.FC<Props> = (props: Props) => {
+    const dispatch = useDispatch();
     const totalSum = useSelector<RootState, number>(state => state.cart.totalAmoaunt);
     const cartItems = useSelector<RootState, CartItem[]>
         (state => {
@@ -19,14 +22,14 @@ const CartScreen: React.FC<Props> = (props: Props) => {
             for (const key in state.cart.items) {
                 transofrmedCartItems.push(state.cart.items[key]);
             }
-            return transofrmedCartItems;
+            return transofrmedCartItems.sort((a, b) => a.productTitle > b.productTitle ? 1 : -1);
         });
 
     return (
         <View style={styles.screen}>
             <View style={styles.summary}>
                 <Text style={styles.summaryText}>
-                    Total <Text style={styles.amount}> {totalSum.toFixed(2)}</Text>
+                    Total <Text style={styles.amount}> ${totalSum.toFixed(2)}</Text>
                 </Text>
                 <Button title='Order Now'
                     color={Colors.accent}
@@ -43,7 +46,7 @@ const CartScreen: React.FC<Props> = (props: Props) => {
                     quantity={itemData.item.quantity}
                     sum={itemData.item.sum}
                     onRemove={() => {
-                        console.log('remove was clicked on: ' + itemData.item.id);
+                        dispatch(cartActions.removeFromCart(Product.JustId(itemData.item.id)));
                     }}
                 />}
             />
